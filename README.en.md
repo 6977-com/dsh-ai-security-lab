@@ -6,6 +6,8 @@ An AI safety testing plugin (**DSH bundle**) for [DeepSeek Harness](https://gith
 
 **MIT licensed · zero runtime dependencies · no build step.**
 
+**Current version: v1.0.1** (package `dsh-ai-security-lab`, DSH `>= 0.2.2-rc.2`)
+
 > ⚠️ **Authorized use only.** Use it on models and endpoints you own or are permitted to test. Tests make real model requests and may cost money. Follow the target provider's terms and local law.
 
 ## What it does
