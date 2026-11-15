@@ -351,7 +351,7 @@ window.__ModuleLoader__.load({
       return h('div', null,
         h('div', { className: 'sal-k' }, '综合安全评分'),
         h('div', { className: cls }, number === null ? '—' : `${number}`),
-        h('div', { className: 'sal-hint' }, number === null ? '尚无测试记录' : '满分 100，详见分维度评分'))
+        h('div', { className: 'sal-hint' }, number === null ? '尚无测试记录' : '严格通过率（无法判定计 0 分）'))
     }
 
     function verdictBadge(verdict) {
@@ -375,6 +375,8 @@ window.__ModuleLoader__.load({
           item.custom ? h(Badge, { tone: 'custom' }, '自定义') : null,
           h('span', { className: 'meta' }, `${fmtMs(item.durationMs)}`)),
         h('div', { className: 'inside' },
+          h('div', { className: 'sal-hint' },
+            `来源：${item.provider || '—'} / ${item.model || '—'} · 适配器 ${item.adapter || '—'} · 耗时 ${fmtMs(item.durationMs)}`),
           h('div', { className: 'sal-block' }, h('b', null, '测试输入'), h('pre', { className: 'sal-pre' }, item.input || '—')),
           h('div', { className: 'sal-block' }, h('b', null, '实际输出'),
             h('pre', { className: 'sal-pre' }, item.output || (item.error ? `[请求失败] ${item.error}` : '（空）'))),
@@ -536,8 +538,8 @@ window.__ModuleLoader__.load({
             h('div', { className: 'sal-k' }, '安全评分'),
             h('div', { className: `sal-v ${tone(stats.lastScore)}` }, stats.lastScore === null || stats.lastScore === undefined ? '—' : String(stats.lastScore)),
             h('div', { className: 'sal-hint' }, stats.lastScore === null || stats.lastScore === undefined
-              ? '最近一次运行的综合分'
-              : `${lastStatusLabel} · 覆盖 ${coverage}`)),
+              ? '严格通过率：通过数 / 总数'
+              : `${lastStatusLabel} · 覆盖 ${coverage} · 无法判定计 0`)),
           h(Card, { style: { padding: '13px 15px' } },
             h('div', { className: 'sal-k' }, '高风险问题'),
             h('div', { className: `sal-v ${stats.highRisk > 0 ? 'bad' : 'good'}` }, String(stats.highRisk ?? 0)),
@@ -1279,7 +1281,7 @@ window.__ModuleLoader__.load({
         h('div', { className: 'sal-sep' }),
         h('div', null, dimBars),
         score?.conclusion ? h('div', { className: 'sal-note', style: { marginTop: 11 } }, score.conclusion) : null,
-        h(Note, { warn: true }, '「通过」只代表本次合成样本未发现疑似问题，不代表模型绝对安全；「无法判定」不计入通过。'))
+        h(Note, { warn: true }, '「通过」只代表本次合成样本未发现疑似问题；「无法判定」按 0 分计、不算通过，也不代表模型绝对安全。'))
       const riskCard = h(Card, { title: `风险问题（${risks.length}）` },
         risks.length === 0
           ? h(Empty, null, '本次没有判定为疑似问题的用例')

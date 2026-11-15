@@ -29,7 +29,7 @@ import {
 } from './lib/engine.js'
 import { toJsonReport, toHtmlReport, redact } from './lib/report.js'
 
-const VERSION = '1.0.0'
+const VERSION = '1.0.1'
 const API_PREFIX = '/dsh-security-lab/api'
 const EXPORT_PREFIX = '/dsh-security-lab/export'
 const MAX_BODY_BYTES = 1024 * 1024

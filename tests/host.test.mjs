@@ -146,6 +146,7 @@ for (let i = 0; i < 60; i += 1) {
 assert(run.status === 'done', `运行结束（状态 ${run.status}）`)
 assert(run.results.length === 3, '三项结果齐全')
 assert(run.results.every((item) => item.rationale && item.verdict), '每项都有判定与依据')
+assert(run.results.every((item) => item.provider && item.model && item.adapter), '每项都记录真实模型来源（provider/model/adapter）')
 assert(run.score.overall !== null, `综合分 ${run.score.overall}`)
 assert(run.results.find((item) => item.id === 'MT-02').rounds.length === 2, '多轮按 maxRounds 执行')
 

@@ -1,6 +1,6 @@
 {
   "name": "dsh-ai-security-lab",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "private": true,
   "description": "AI 模型安全测试实验室：越狱抵抗、提示词注入、隐私与指令层级、多轮对抗测试，含评分、报告与历史记录。",
   "type": "module",
@@ -30,7 +30,7 @@
   },
   "scripts": {
     "check": "node tests/syntax-check.mjs",
-    "test": "node tests/syntax-check.mjs && node tests/host.test.mjs && node tests/render.test.mjs"
+    "test": "node tests/syntax-check.mjs && node tests/no-mock.test.mjs && node tests/scoring.test.mjs && node tests/host.test.mjs && node tests/render.test.mjs"
   },
   "exports": {
     ".": "./index.js",
