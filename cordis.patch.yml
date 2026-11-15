@@ -1,0 +1,15 @@
+# 本 bundle 的插入层：一行 Host 插件（网络、存储、评分、报告），
+# 外加 package.json 的 dsh.client 声明把 ./client 作为浏览器半边加载。
+# 不修改 profile 的其它行，也不覆盖任何模型配置。
+- insert:
+    - id: dsh-ai-security-lab
+      name: dsh-ai-security-lab
+      config:
+        # 请求超时（毫秒），单测可再被界面参数覆盖
+        timeoutMs: 60000
+        # 多轮测试默认最大轮数（1-8）
+        maxRounds: 2
+        # 一次运行最多执行的测试项，防止误触发大批量请求
+        maxTestsPerRun: 60
+        # 允许非回环地址访问本插件 HTTP 接口（默认关闭）
+        allowLan: false

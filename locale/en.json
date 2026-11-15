@@ -1,0 +1,7 @@
+{
+  "meta": {
+    "title": "AI security lab",
+    "description": "Authorized AI safety testing inside Harness, against the current model route or any OpenAI-compatible endpoint: jailbreak resistance, prompt injection, privacy, instruction hierarchy and multi-turn pressure, with 20 harmless synthetic samples, 0-100 dimension scores, risk details, cross-model comparison and JSON/HTML reports. Usage: open Security lab in the left sidebar, use Model connection to keep the Harness model route or save a local Ollama / LM Studio / vLLM / compatible cloud endpoint, run from the Jailbreak, Prompt injection or Multi-turn tabs, then export and compare from History or Security report. Limitations: verdicts come from deterministic rules (refusal phrases, a synthetic canary and per-test evidence), so false positives and false negatives are possible; a pass means only that these samples found nothing, not that the model is safe; tests make real model requests and cost money; Harness mode reuses the current route without changing model configuration; API keys live only in the Harness credentials service, never in files, logs or reports; disabling the plugin releases its routes and running jobs while history stays in ~/.dsh/security-lab.",
+    "detail": "docs/DETAIL.md"
+  }
+}
